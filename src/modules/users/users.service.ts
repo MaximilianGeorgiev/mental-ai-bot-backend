@@ -11,7 +11,7 @@ export class UsersService {
   async create(createCatDto: CreateUserDto): Promise<User | HttpException> {
     try {
       const createdCat = new this.userModel(createCatDto);
-      return createdCat.save();
+      return await createdCat.save();
     } catch (err) {
       return new HttpException(err.message, HttpStatus.UNPROCESSABLE_ENTITY);
     }
@@ -21,10 +21,10 @@ export class UsersService {
     return this.userModel.find().exec();
   }
 
-  async findOne(
+  async find(
     databaseColumn: string,
     columnValue: string,
-  ): Promise<User | null> {
-    return this.userModel.findOne({ [databaseColumn]: columnValue }).exec();
+  ): Promise<User[] | null> {
+    return this.userModel.find({ [databaseColumn]: columnValue }).exec();
   }
 }
