@@ -28,3 +28,7 @@ export const isResponseInstanceOfUser = (
     );
   } else return false;
 };
+
+export const isServiceOutcome = (response: object) => {
+  return "success" in response && "message" in response;
+};

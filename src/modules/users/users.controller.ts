@@ -1,15 +1,21 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpException,
+  HttpStatus,
   Param,
   Post,
+  Put,
 } from "@nestjs/common";
 import { CreateUserDto } from "./dtos/create-user.dto";
 import { UsersService } from "./users.service";
 import { User } from "./schemas/user.schema";
-import { isResponseInstanceOfUser } from "src/types/guards/database-responses";
+import {
+  isResponseInstanceOfUser,
+  isServiceOutcome,
+} from "src/types/guards/database-responses";
 
 @Controller("users")
 export class UsersController {
@@ -41,6 +47,37 @@ export class UsersController {
     const response = await this.usersService.create(createUserDto);
 
     if (isResponseInstanceOfUser(response)) return response;
+    else if (response instanceof HttpException) throw response;
+  }
+
+  @Put(":userId")
+  async update(
+    @Body("column") column: string,
+    @Body("updateValue") updateValue: string,
+    @Param("userId") userId: string,
+  ): Promise<void | User | []> {
+    if (!column || !updateValue || !userId)
+      throw new HttpException(
+        "Invalid parameters to process update operation.",
+        HttpStatus.UNPROCESSABLE_ENTITY,
+      );
+
+    const response = await this.usersService.update(
+      userId,
+      column,
+      updateValue,
+    );
+
+    if (response === null) return [];
+    else if (isResponseInstanceOfUser(response)) return response;
+    else if (response instanceof HttpException) throw response;
+  }
+
+  @Delete(":userId")
+  async delete(@Param("userId") userId: string): Promise<any> {
+    const response = await this.usersService.delete(userId);
+
+    if (isServiceOutcome(response)) return response.message;
     else if (response instanceof HttpException) throw response;
   }
 }

@@ -5,3 +5,8 @@ export interface ApiResponse {
   status: HttpStatus;
   message: ResponseEntity;
 }
+
+export interface ServiceOperationOutcome {
+  success: boolean;
+  message: string;
+}
