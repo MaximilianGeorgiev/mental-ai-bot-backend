@@ -1,6 +1,6 @@
-import { Message } from "src/modules/messages/schemas/message.schema";
+import { Message } from "../interfaces/entities/messages";
+import { SelfCarePlan } from "../interfaces/entities/plans";
 import { User } from "../interfaces/entities/users";
-import { SelfCarePlan } from "src/modules/plans/schemas/self-care-plan.schema";
 
 const containsIdProperty = (response: object) => "_id" in response;
 

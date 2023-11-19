@@ -76,7 +76,7 @@ export class MessageController {
   }
 
   @Delete(":messageId")
-  async delete(@Param("messageId") messageId: string): Promise<any> {
+  async delete(@Param("messageId") messageId: string): Promise<string | void> {
     const response = await this.messageService.delete(messageId);
 
     if (isServiceOutcome(response)) return response.message;

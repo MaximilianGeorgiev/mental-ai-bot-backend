@@ -74,7 +74,7 @@ export class UsersController {
   }
 
   @Delete(":userId")
-  async delete(@Param("userId") userId: string): Promise<any> {
+  async delete(@Param("userId") userId: string): Promise<string | void> {
     const response = await this.usersService.delete(userId);
 
     if (isServiceOutcome(response)) return response.message;

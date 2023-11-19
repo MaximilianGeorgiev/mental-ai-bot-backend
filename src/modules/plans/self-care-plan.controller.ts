@@ -78,7 +78,9 @@ export class SelfCarePlanController {
   }
 
   @Delete(":selfCarePlanId")
-  async delete(@Param("selfCarePlanId") selfCarePlanId: string): Promise<any> {
+  async delete(
+    @Param("selfCarePlanId") selfCarePlanId: string,
+  ): Promise<string | void> {
     const response = await this.selfCarePlanService.delete(selfCarePlanId);
 
     if (isServiceOutcome(response)) return response.message;
