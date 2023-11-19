@@ -1,3 +1,4 @@
+import { Conversation } from "src/modules/conversations/schemas/conversation.schema";
 import { Message } from "../interfaces/entities/messages";
 import { SelfCarePlan } from "../interfaces/entities/plans";
 import { User } from "../interfaces/entities/users";
@@ -78,6 +79,31 @@ export const isResponseInstanceOfSelfCarePlan = (
       "progress" in response &&
       "targetDate" in response &&
       "dailyTasks" in response
+    );
+  } else return false;
+};
+
+export const isResponseInstanceOfConversation = (
+  response: object | object[],
+): response is Conversation => {
+  if (Array.isArray(response)) {
+    let isInstance = true;
+
+    response.forEach((item: object) => {
+      if (!isResponseInstanceOfMessage(item)) {
+        isInstance = false;
+        return;
+      }
+    });
+
+    return isInstance;
+  } else if (typeof response === "object") {
+    return (
+      containsIdProperty(response) &&
+      "dateCreated" in response &&
+      "messages" in response &&
+      "title" in response &&
+      "isArchived" in response
     );
   } else return false;
 };
