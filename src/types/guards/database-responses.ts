@@ -1,9 +1,11 @@
 import { Message } from "src/modules/messages/schemas/message.schema";
 import { User } from "../interfaces/entities/users";
+import { SelfCarePlan } from "src/modules/plans/schemas/self-care-plan.schema";
 
 const containsIdProperty = (response: object) => "_id" in response;
 
 // Custom guards to check if returned object implements interface
+// TO DO: Make one generic function to avoid repetitive code
 export const isResponseInstanceOfUser = (
   response: object | object[],
 ): response is User => {
@@ -50,6 +52,32 @@ export const isResponseInstanceOfMessage = (
       "timestamp" in response &&
       "message" in response &&
       "type" in response
+    );
+  } else return false;
+};
+
+export const isResponseInstanceOfSelfCarePlan = (
+  response: object | object[],
+): response is SelfCarePlan => {
+  if (Array.isArray(response)) {
+    let isInstance = true;
+
+    response.forEach((item: object) => {
+      if (!isResponseInstanceOfMessage(item)) {
+        isInstance = false;
+        return;
+      }
+    });
+
+    return isInstance;
+  } else if (typeof response === "object") {
+    return (
+      containsIdProperty(response) &&
+      "description" in response &&
+      "isCompleted" in response &&
+      "progress" in response &&
+      "targetDate" in response &&
+      "dailyTasks" in response
     );
   } else return false;
 };

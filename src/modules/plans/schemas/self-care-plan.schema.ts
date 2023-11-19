@@ -28,4 +28,4 @@ export class SelfCarePlan {
   userId?: string; // bind foreign key
 }
 
-export const MessageSchema = SchemaFactory.createForClass(SelfCarePlan);
+export const SelfCarePlanSchema = SchemaFactory.createForClass(SelfCarePlan);
