@@ -9,10 +9,10 @@ import { ServiceOperationOutcome } from "src/types/interfaces/api-response";
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  async create(createCatDto: CreateUserDto): Promise<User | HttpException> {
+  async create(createUserDto: CreateUserDto): Promise<User | HttpException> {
     try {
-      const createdCat = new this.userModel(createCatDto);
-      return await createdCat.save();
+      const createdUser = new this.userModel(createUserDto);
+      return await createdUser.save();
     } catch (err) {
       return new HttpException(err.message, HttpStatus.UNPROCESSABLE_ENTITY);
     }
