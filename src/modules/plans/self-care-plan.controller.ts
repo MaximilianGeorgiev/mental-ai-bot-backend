@@ -50,7 +50,8 @@ export class SelfCarePlanController {
       createSelfCarePlanDto,
     );
 
-    if (isResponseInstanceOfSelfCarePlan(response)) return response;
+    if (isResponseInstanceOfSelfCarePlan(response))
+      return response as SelfCarePlan;
     else if (response instanceof HttpException) throw response;
   }
 
@@ -73,7 +74,8 @@ export class SelfCarePlanController {
     );
 
     if (response === null) return [];
-    else if (isResponseInstanceOfSelfCarePlan(response)) return response;
+    else if (isResponseInstanceOfSelfCarePlan(response))
+      return response as SelfCarePlan;
     else if (response instanceof HttpException) throw response;
   }
 

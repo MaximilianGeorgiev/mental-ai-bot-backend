@@ -29,7 +29,7 @@ export class UsersController {
     const response = await this.usersService.find(column, searchValue);
 
     if (response === null) return [];
-    else if (isResponseInstanceOfUser(response)) return response;
+    else if (isResponseInstanceOfUser(response)) return response as User[];
     else if (response instanceof HttpException) throw response;
   }
 

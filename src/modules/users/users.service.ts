@@ -25,8 +25,14 @@ export class UsersService {
   async find(
     databaseColumn: string,
     columnValue: string,
-  ): Promise<User[] | null> {
-    return this.userModel.find({ [databaseColumn]: columnValue }).exec();
+    findMany: boolean = true,
+  ): Promise<User | User[] | null> {
+    const result = await this.userModel
+      .find({ [databaseColumn]: columnValue })
+      .exec();
+
+    if (!findMany && result.length > 0) return result[0];
+    return result; // array or null
   }
 
   async update(
