@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { HydratedDocument } from "mongoose";
+import { HydratedDocument, Types } from "mongoose";
 import { Activity, Gender, Goal } from "src/types/user-properties.type";
 import { hash } from "bcryptjs";
 import { BCRYPT_SALT_ROUNDS } from "src/utils/constants";
@@ -8,8 +8,8 @@ export type UserDocument = HydratedDocument<User>;
 
 @Schema()
 export class User {
-  @Prop()
-  _id: string;
+  @Prop({ type: Types.ObjectId, default: () => new Types.ObjectId() })
+  _id: Types.ObjectId;
 
   @Prop({ required: true })
   username: string;

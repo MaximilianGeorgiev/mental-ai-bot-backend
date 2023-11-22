@@ -1,13 +1,13 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { HydratedDocument } from "mongoose";
+import { HydratedDocument, Types } from "mongoose";
 import { DailyTask } from "src/types/interfaces/entities/plans";
 
 export type MessageDocument = HydratedDocument<SelfCarePlan>;
 
 @Schema()
 export class SelfCarePlan {
-  @Prop()
-  _id: string;
+  @Prop({ type: Types.ObjectId, default: () => new Types.ObjectId() })
+  _id: Types.ObjectId;
 
   @Prop({ required: true })
   description: string;

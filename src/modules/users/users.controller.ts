@@ -46,7 +46,7 @@ export class UsersController {
   async create(@Body() createUserDto: CreateUserDto): Promise<void | User> {
     const response = await this.usersService.create(createUserDto);
 
-    if (isResponseInstanceOfUser(response)) return response;
+    if (isResponseInstanceOfUser(response)) return response as User;
     else if (response instanceof HttpException) throw response;
   }
 
@@ -69,7 +69,7 @@ export class UsersController {
     );
 
     if (response === null) return [];
-    else if (isResponseInstanceOfUser(response)) return response;
+    else if (isResponseInstanceOfUser(response)) return response as User;
     else if (response instanceof HttpException) throw response;
   }
 
