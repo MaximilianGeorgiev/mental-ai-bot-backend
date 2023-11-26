@@ -11,6 +11,7 @@ import { UsersService } from "./modules/users/users.service";
 import { User, UserSchema } from "./modules/users/schemas/user.schema";
 import { LocalAuthGuard } from "./modules/auth/local-auth.guard";
 import { JwtModule } from "@nestjs/jwt";
+import { JwtStrategy } from "./modules/auth/jwt.strategy";
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { JwtModule } from "@nestjs/jwt";
     AppService,
     AuthService,
     LocalStrategy,
+    JwtStrategy,
     UsersService,
     LocalAuthGuard,
   ],

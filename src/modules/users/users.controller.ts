@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from "@nestjs/common";
 import { CreateUserDto } from "./dtos/create-user.dto";
 import { UsersService } from "./users.service";
@@ -16,6 +17,7 @@ import {
   isResponseInstanceOfUser,
   isServiceOutcome,
 } from "src/types/guards/database-responses";
+import { AuthGuard } from "@nestjs/passport";
 
 @Controller("users")
 export class UsersController {
@@ -33,6 +35,7 @@ export class UsersController {
     else if (response instanceof HttpException) throw response;
   }
 
+  @UseGuards(AuthGuard("jwt"))
   @Get()
   async findAll(): Promise<void | User[]> {
     const response = await this.usersService.findAll();
