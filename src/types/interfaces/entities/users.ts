@@ -1,4 +1,4 @@
-import { Activity, Gender, Goal } from "src/types/user-properties.type";
+import { Activity, Gender, Goal, Role } from "src/types/user-properties.type";
 
 export interface User {
   _id: string;
@@ -11,4 +11,5 @@ export interface User {
   preferedActivities?: Activity[];
   goals: Goal[];
   age?: number;
+  role: Role;
 }

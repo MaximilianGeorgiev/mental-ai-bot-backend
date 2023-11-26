@@ -25,3 +25,9 @@ export enum Goals {
   SUICIDAL = "Stop being suicidal",
   SELF_HARM = "Stop being inclined to self harm",
 }
+
+export enum UserRoles {
+  ADMIN = "admin",
+  REGISTERED_USER = "user",
+  GUEST = "guest",
+}

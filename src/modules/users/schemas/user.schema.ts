@@ -1,8 +1,9 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument, Types } from "mongoose";
-import { Activity, Gender, Goal } from "src/types/user-properties.type";
+import { Activity, Gender, Goal, Role } from "src/types/user-properties.type";
 import { hash as bcryptPasswordHash } from "bcryptjs";
 import { BCRYPT_SALT_ROUNDS } from "src/utils/constants";
+import { UserRoles } from "src/types/enums/user-properties.enum";
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -37,6 +38,9 @@ export class User {
 
   @Prop()
   age: number;
+
+  @Prop({ required: true, default: UserRoles.REGISTERED_USER })
+  role: Role;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

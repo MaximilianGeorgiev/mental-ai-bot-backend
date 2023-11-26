@@ -20,7 +20,7 @@ import { JwtStrategy } from "./modules/auth/jwt.strategy";
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     JwtModule.register({
       secret: "ah23refdcvxvfr4444eeptb0l21izz15qb4y",
-      signOptions: { expiresIn: "60s" },
+      signOptions: { expiresIn: "1080s" },
     }),
     UsersModule,
     PassportModule,
