@@ -55,11 +55,11 @@ export class SelfCarePlanController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @Put(":selfCarePlanId")
+  @Put(":id")
   async update(
     @Body("column") column: string,
     @Body("updateValue") updateValue: string,
-    @Param("selfCarePlanId") selfCarePlanId: string,
+    @Param("id") selfCarePlanId: string,
   ): Promise<void | SelfCarePlan | []> {
     if (!column || !updateValue || !selfCarePlanId)
       throw new HttpException(
@@ -79,10 +79,8 @@ export class SelfCarePlanController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @Delete(":selfCarePlanId")
-  async delete(
-    @Param("selfCarePlanId") selfCarePlanId: string,
-  ): Promise<string | void> {
+  @Delete(":id")
+  async delete(@Param("id") selfCarePlanId: string): Promise<string | void> {
     const response = await this.selfCarePlanService.delete(selfCarePlanId);
 
     if (isServiceOutcome(response)) return response.message;

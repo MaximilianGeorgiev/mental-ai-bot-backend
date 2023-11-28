@@ -53,11 +53,11 @@ export class UsersController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @Put(":userId")
+  @Put(":id")
   async update(
     @Body("column") column: string,
     @Body("updateValue") updateValue: string,
-    @Param("userId") userId: string,
+    @Param("id") userId: string,
   ): Promise<void | User | []> {
     if (!column || !updateValue || !userId)
       throw new HttpException(
@@ -76,8 +76,8 @@ export class UsersController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @Delete(":userId")
-  async delete(@Param("userId") userId: string): Promise<string | void> {
+  @Delete(":id")
+  async delete(@Param("id") userId: string): Promise<string | void> {
     const response = await this.usersService.delete(userId);
 
     if (isServiceOutcome(response)) return response.message;

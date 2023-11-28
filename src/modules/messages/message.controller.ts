@@ -52,11 +52,11 @@ export class MessageController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @Put(":messageId")
+  @Put(":id")
   async update(
     @Body("column") column: string,
     @Body("updateValue") updateValue: string,
-    @Param("messageId") messageId: string,
+    @Param("id") messageId: string,
   ): Promise<void | Message | []> {
     if (!column || !updateValue || !messageId)
       throw new HttpException(
@@ -75,8 +75,8 @@ export class MessageController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @Delete(":messageId")
-  async delete(@Param("messageId") messageId: string): Promise<string | void> {
+  @Delete(":id")
+  async delete(@Param("id") messageId: string): Promise<string | void> {
     const response = await this.messageService.delete(messageId);
 
     if (isServiceOutcome(response)) return response.message;

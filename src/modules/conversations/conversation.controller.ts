@@ -54,11 +54,11 @@ export class ConversationController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @Put(":conversationId")
+  @Put(":id")
   async update(
     @Body("column") column: string,
     @Body("updateValue") updateValue: string,
-    @Param("conversationId") conversationId: string,
+    @Param("id") conversationId: string,
   ): Promise<void | Conversation | []> {
     if (!column || !updateValue || !conversationId)
       throw new HttpException(
@@ -77,10 +77,8 @@ export class ConversationController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @Delete(":conversationId")
-  async delete(
-    @Param("conversationId") conversationId: string,
-  ): Promise<string | void> {
+  @Delete(":id")
+  async delete(@Param("id") conversationId: string): Promise<string | void> {
     const response = await this.conversationService.delete(conversationId);
 
     if (isServiceOutcome(response)) return response.message;
