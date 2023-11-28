@@ -9,7 +9,7 @@ export class IssuedToken {
   _id: Types.ObjectId;
 
   @Prop()
-  userId: string; // bind foreign key
+  username: string; // bind foreign key
 
   @Prop()
   token: string;

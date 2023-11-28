@@ -1,4 +1,4 @@
-export interface CreateTokenDto {
+export interface IssuedToken {
   username: string;
   token: string;
 }
