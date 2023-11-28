@@ -35,7 +35,7 @@ export class UsersController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @UseGuards(AuthGuard("jwt"))
+  @UseGuards(AuthGuard("jwt"), AuthGuard("admin"))
   @Get()
   async findAll(): Promise<void | User[]> {
     const response = await this.usersService.findAll();

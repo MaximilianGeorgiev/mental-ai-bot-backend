@@ -2,14 +2,13 @@
 import { Strategy } from "passport-local";
 import { PassportStrategy } from "@nestjs/passport";
 import { Injectable, UnauthorizedException } from "@nestjs/common";
-import { AuthService } from "./auth.service";
 import { User } from "src/types/interfaces/entities/users";
 import { UsersService } from "../users/users.service";
 import { UserRoles } from "src/types/enums/user-properties.enum";
 
 // This strategy is always chained and rejects access to admin routes
 @Injectable()
-export class AdminStrategy extends PassportStrategy(Strategy) {
+export class AdminStrategy extends PassportStrategy(Strategy, "admin") {
   constructor(private userService: UsersService) {
     super();
   }

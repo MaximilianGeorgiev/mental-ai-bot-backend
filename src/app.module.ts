@@ -9,9 +9,9 @@ import { AuthService } from "./modules/auth/auth.service";
 import { LocalStrategy } from "./modules/auth/local.strategy";
 import { UsersService } from "./modules/users/users.service";
 import { User, UserSchema } from "./modules/users/schemas/user.schema";
-import { LocalAuthGuard } from "./modules/auth/local-auth.guard";
 import { JwtModule } from "@nestjs/jwt";
 import { JwtStrategy } from "./modules/auth/jwt.strategy";
+import { AdminStrategy } from "./modules/auth/admin.strategy";
 
 @Module({
   imports: [
@@ -31,8 +31,8 @@ import { JwtStrategy } from "./modules/auth/jwt.strategy";
     AuthService,
     LocalStrategy,
     JwtStrategy,
+    AdminStrategy,
     UsersService,
-    LocalAuthGuard,
   ],
 })
 export class AppModule {}
