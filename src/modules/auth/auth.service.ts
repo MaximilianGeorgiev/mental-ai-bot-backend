@@ -5,12 +5,14 @@ import { compare as bcryptPasswordCheck } from "bcryptjs";
 import { JwtService } from "@nestjs/jwt";
 import { LoginCredentialsPayload } from "src/types/interfaces/auth/login";
 import { extractApiCallCategory } from "src/utils/helper-functions";
+import { IssuedTokensService } from "../tokens/issued-tokens.service";
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
+    private issuedTokensService: IssuedTokensService,
   ) {}
 
   async validateUser(
@@ -41,6 +43,14 @@ export class AuthService {
   async login(user: LoginCredentialsPayload) {
     const payload = { username: user.username, sub: user.password };
     const accessToken = this.jwtService.sign(payload);
+
+    console.log("test " + user.username);
+    
+
+    await this.issuedTokensService.create({
+      username: user.username,
+      token: accessToken,
+    });
 
     return {
       accessToken,

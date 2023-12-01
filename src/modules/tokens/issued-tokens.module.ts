@@ -10,5 +10,6 @@ import { IssuedToken, IssuedTokenSchema } from "./schemas/issued-tokens.schema";
     ]),
   ],
   providers: [IssuedTokensService],
+  exports: [IssuedTokensService],
 })
-export class MessagesModule {}
+export class IssuedTokensModule {}

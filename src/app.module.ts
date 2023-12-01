@@ -12,6 +12,7 @@ import { User, UserSchema } from "./modules/users/schemas/user.schema";
 import { JwtModule } from "@nestjs/jwt";
 import { JwtStrategy } from "./modules/auth/jwt.strategy";
 import { AdminStrategy } from "./modules/auth/admin.strategy";
+import { IssuedTokensModule } from "./modules/tokens/issued-tokens.module";
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { AdminStrategy } from "./modules/auth/admin.strategy";
     }),
     UsersModule,
     PassportModule,
+    IssuedTokensModule,
   ],
   controllers: [AppController],
   providers: [

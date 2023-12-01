@@ -13,6 +13,7 @@ import { MessageService } from "../messages/message.service";
 import { ConversationService } from "../conversations/conversation.service";
 import { SelfCarePlanService } from "../plans/self-care-plan.service";
 import { ServiceNames } from "src/types/enums/service-calls.enum";
+import { IssuedTokensService } from "../tokens/issued-tokens.service";
 
 // This strategy is always chained and examines if the queried entity belongs to the user
 @Injectable()
@@ -29,6 +30,7 @@ export class EntityOwnerStrategy extends PassportStrategy(
     private messagesService: MessageService,
     private conversationsService: ConversationService,
     private plansService: SelfCarePlanService,
+    private tokensService: IssuedTokensService,
   ) {
     super();
   }
