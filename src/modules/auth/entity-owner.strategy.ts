@@ -1,10 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Strategy } from "passport-local";
 import { PassportStrategy } from "@nestjs/passport";
-import { ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
+import {
+  ExecutionContext,
+  Injectable,
+  UnauthorizedException,
+} from "@nestjs/common";
 import { User } from "src/types/interfaces/entities/users";
 import { UsersService } from "../users/users.service";
-import { UserRoles } from "src/types/enums/user-properties.enum";
+import { AuthService } from "./auth.service";
+import { MessageService } from "../messages/message.service";
+import { ConversationService } from "../conversations/conversation.service";
+import { SelfCarePlanService } from "../plans/self-care-plan.service";
+import { ServiceNames } from "src/types/enums/service-calls.enum";
 
 // This strategy is always chained and examines if the queried entity belongs to the user
 @Injectable()
@@ -13,29 +21,70 @@ export class EntityOwnerStrategy extends PassportStrategy(
   "entityOwner",
 ) {
   queryParam: string;
+  routeUrl: string;
 
-  constructor(private userService: UsersService) {
+  constructor(
+    private usersService: UsersService,
+    private authService: AuthService,
+    private messagesService: MessageService,
+    private conversationsService: ConversationService,
+    private plansService: SelfCarePlanService,
+  ) {
     super();
   }
 
+  // Built in function to determine if access to the route should be granted or not
+  // If result is true then the "validate" method of this strategy is called. We have the ID
+  // extracted from the query param and we will be able to determine if the requester is the owner
+  // of the entity.
   canActivate(context: ExecutionContext) {
-    const request = context.switchToHttp().getRequest();
-    const params = request.params;
-    const id = params.id; // automatically parsed
+    const {
+      params: { id: queriedId },
+      url,
+    } = context.switchToHttp().getRequest();
 
-    if (id) {
-      this.queryParam = id;
+    if (queriedId) {
+      this.queryParam = queriedId;
+      this.routeUrl = url;
+
+      return true;
     }
+
+    return false;
   }
 
   async validate(
     username: string,
     _password: string,
   ): Promise<Partial<User> | null> {
-    const userFound = await this.userService.find("username", username, false);
+    const userFound = await this.usersService.find("username", username, false);
 
     if (userFound) {
       const { _id: userId } = userFound as unknown as User;
+
+      /* From the URL extract the sub route that is queried
+         So we can call the respective service, fetch the correct entity
+         and compare the ID of the authenticated user and the userId in the fetched entity
+         to determine ownership and hence authorize this API call. */
+      const serviceName = this.authService.getServiceCall(
+        this.queryParam,
+        this.routeUrl,
+      ) as keyof typeof ServiceNames;
+
+      if (!this[ServiceNames[serviceName]]) {
+        throw new UnauthorizedException();
+      }
+
+      const service = this[ServiceNames[serviceName]];
+      const { userId: entityOwnerUserId, _id: entityId } = (await service.find(
+        "_id",
+        this.queryParam,
+        false,
+      )) as unknown as any;
+
+      if (entityOwnerUserId !== userId || entityId !== userId) {
+        throw new UnauthorizedException(); // user is not owner of requested entity
+      }
     } else {
       throw new UnauthorizedException();
     }

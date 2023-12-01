@@ -4,14 +4,13 @@ import { User } from "src/types/interfaces/entities/users";
 import { compare as bcryptPasswordCheck } from "bcryptjs";
 import { JwtService } from "@nestjs/jwt";
 import { LoginCredentialsPayload } from "src/types/interfaces/auth/login";
-import { IssuedTokensService } from "../tokens/issued-tokens.service";
+import { extractApiCallCategory } from "src/utils/helper-functions";
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
-    private issuedTokensService: IssuedTokensService,
   ) {}
 
   async validateUser(
@@ -41,17 +40,19 @@ export class AuthService {
 
   async login(user: LoginCredentialsPayload) {
     const payload = { username: user.username, sub: user.password };
-
-    // Save issued access token with username and use it in admin strategy
     const accessToken = this.jwtService.sign(payload);
-
-    await this.issuedTokensService.create({
-      username: user.username,
-      token: accessToken,
-    });
 
     return {
       accessToken,
     };
+  }
+
+  getServiceCall(queryParam: string, routeUrl: string): string {
+    if (queryParam && routeUrl) {
+      const { success, message } = extractApiCallCategory(routeUrl);
+      return success ? message : "";
+    }
+
+    return "";
   }
 }
