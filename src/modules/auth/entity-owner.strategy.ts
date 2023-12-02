@@ -13,6 +13,7 @@ import { ServiceNames } from "src/types/enums/service-calls.enum";
 import { IssuedTokensService } from "../tokens/issued-tokens.service";
 import { IssuedToken } from "../tokens/schemas/issued-tokens.schema";
 import { CrudService } from "src/types/interfaces/api";
+import { toObjectId } from "src/utils/database";
 
 // This strategy is always chained and examines if the queried entity belongs to the user
 @Injectable()
@@ -34,7 +35,15 @@ export class EntityOwnerStrategy extends PassportStrategy(
     //@ts-ignore
     const bearerToken = request.headers.authorization.split(" ")[1];
     //@ts-ignore
-    const queryParam = request.param("searchValue");
+    const queryParam = request.param(
+      request.method === "PUT" || request.method === "DELETE"
+        ? "_id"
+        : request.method === "GET"
+        ? "searchValue"
+        : "",
+    );
+    //@ts-ignore
+    const column = request.param("column");
     const routeUrl = request.url;
 
     // Obtain who owns the issued token
@@ -68,8 +77,8 @@ export class EntityOwnerStrategy extends PassportStrategy(
 
       const service = this[serviceName as keyof typeof this] as CrudService;
       const { userId: entityOwnerUserId, _id: entityId } = (await service.find(
-        "username",
-        queryParam,
+        column,
+        column === "_id" ? toObjectId(queryParam) : queryParam,
         false,
       )) as unknown as any;
 

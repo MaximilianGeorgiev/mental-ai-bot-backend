@@ -4,11 +4,12 @@ import { CreateMessageDto } from "src/modules/messages/dtos/create-message.dto";
 import { CreateSelfCarePlanDto } from "src/modules/plans/dtos/create-self-care-plan.dto";
 import { CreateUserDto } from "src/modules/users/dtos/create-user.dto";
 import { ServiceOperationOutcome } from "./api-response";
+import mongoose, { ObjectId } from "mongoose";
 
 export interface CrudService {
   find: <T>(
     databaseColumn: string,
-    columnValue: string,
+    columnValue: string | mongoose.Types.ObjectId,
     findMany: boolean,
   ) => Promise<T | T[] | null>;
 
