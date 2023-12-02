@@ -19,9 +19,9 @@ export const extractApiCallCategory = (
   url: string,
 ): ServiceOperationOutcome => {
   try {
-    const categorySubString = url.split("/")[2];
+    const categorySubString = url.split("/")[1];
 
-    if (isStringPresentInEnum(categorySubString, ValidRoutes)) {
+    if (isStringPresentInEnum(categorySubString, ValidRoutes, true)) {
       return { success: true, message: `${categorySubString}Service` };
     }
   } catch (err) {
