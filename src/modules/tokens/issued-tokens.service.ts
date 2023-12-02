@@ -30,8 +30,14 @@ export class IssuedTokensService {
   async find(
     databaseColumn: string,
     columnValue: string,
-  ): Promise<IssuedToken[] | null> {
-    return this.issuedTokenModel.find({ [databaseColumn]: columnValue }).exec();
+    findMany: boolean = true,
+  ): Promise<IssuedToken | IssuedToken[] | null> {
+    const result = await this.issuedTokenModel
+      .find({ [databaseColumn]: columnValue })
+      .exec();
+
+    if (!findMany && result.length > 0) return result[0];
+    return result; // array or null
   }
 
   async update(

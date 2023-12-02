@@ -44,9 +44,6 @@ export class AuthService {
     const payload = { username: user.username, sub: user.password };
     const accessToken = this.jwtService.sign(payload);
 
-    console.log("test " + user.username);
-    
-
     await this.issuedTokensService.create({
       username: user.username,
       token: accessToken,
