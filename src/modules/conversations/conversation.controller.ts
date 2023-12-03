@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from "@nestjs/common";
 import { ConversationService } from "./conversation.service";
 import {
@@ -16,11 +17,13 @@ import {
 } from "src/types/guards/database-responses";
 import { Conversation } from "./schemas/conversation.schema";
 import { CreateConversationDto } from "./dtos/create-conversation.dto";
+import { AuthGuard } from "@nestjs/passport";
 
 @Controller("conversations")
 export class ConversationController {
   constructor(private conversationService: ConversationService) {}
 
+  @UseGuards(AuthGuard("jwt"), AuthGuard("entityOwner"))
   @Get("/:column/:searchValue")
   async findByProperty(
     @Param("column") column: string,
@@ -33,6 +36,7 @@ export class ConversationController {
     else if (response instanceof HttpException) throw response;
   }
 
+  @UseGuards(AuthGuard("admin"))
   @Get()
   async findAll(): Promise<void | Conversation[]> {
     const response = await this.conversationService.findAll();
@@ -54,6 +58,7 @@ export class ConversationController {
     else if (response instanceof HttpException) throw response;
   }
 
+  @UseGuards(AuthGuard("jwt"), AuthGuard("entityOwner"))
   @Put(":id")
   async update(
     @Body("column") column: string,
@@ -77,6 +82,7 @@ export class ConversationController {
     else if (response instanceof HttpException) throw response;
   }
 
+  @UseGuards(AuthGuard("jwt"), AuthGuard("entityOwner"))
   @Delete(":id")
   async delete(@Param("id") conversationId: string): Promise<string | void> {
     const response = await this.conversationService.delete(conversationId);

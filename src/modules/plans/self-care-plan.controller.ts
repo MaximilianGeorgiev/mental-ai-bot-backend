@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from "@nestjs/common";
 import { CreateSelfCarePlanDto } from "./dtos/create-self-care-plan.dto";
 import { SelfCarePlanService } from "./self-care-plan.service";
@@ -16,6 +17,7 @@ import {
   isResponseInstanceOfSelfCarePlan,
   isServiceOutcome,
 } from "src/types/guards/database-responses";
+import { AuthGuard } from "@nestjs/passport";
 
 @Controller("plans")
 export class SelfCarePlanController {
@@ -33,6 +35,7 @@ export class SelfCarePlanController {
     else if (response instanceof HttpException) throw response;
   }
 
+  @UseGuards(AuthGuard("admin"))
   @Get()
   async findAll(): Promise<void | SelfCarePlan[]> {
     const response = await this.selfCarePlanService.findAll();
@@ -55,6 +58,7 @@ export class SelfCarePlanController {
     else if (response instanceof HttpException) throw response;
   }
 
+  @UseGuards(AuthGuard("jwt"), AuthGuard("entityOwner"))
   @Put(":id")
   async update(
     @Body("column") column: string,
@@ -79,6 +83,7 @@ export class SelfCarePlanController {
     else if (response instanceof HttpException) throw response;
   }
 
+  @UseGuards(AuthGuard("jwt"), AuthGuard("entityOwner"))
   @Delete(":id")
   async delete(@Param("id") selfCarePlanId: string): Promise<string | void> {
     const response = await this.selfCarePlanService.delete(selfCarePlanId);

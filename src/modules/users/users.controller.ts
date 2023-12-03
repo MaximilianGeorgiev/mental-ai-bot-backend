@@ -54,6 +54,7 @@ export class UsersController {
     else if (response instanceof HttpException) throw response;
   }
 
+  @UseGuards(AuthGuard("jwt"), AuthGuard("entityOwner"))
   @Put(":id")
   async update(
     @Body("column") column: string,
@@ -77,6 +78,7 @@ export class UsersController {
     else if (response instanceof HttpException) throw response;
   }
 
+  @UseGuards(AuthGuard("jwt"), AuthGuard("entityOwner"))
   @Delete(":id")
   async delete(@Param("id") userId: string): Promise<string | void> {
     const response = await this.usersService.delete(userId);
