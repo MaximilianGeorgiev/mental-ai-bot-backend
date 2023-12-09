@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { MiddlewareConsumer, Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
@@ -26,6 +26,7 @@ import {
   SelfCarePlan,
   SelfCarePlanSchema,
 } from "./modules/plans/schemas/self-care-plan.schema";
+import { CorsMiddleware } from "./middlewares/cors.middleware";
 
 @Module({
   imports: [
@@ -61,4 +62,8 @@ import {
     SelfCarePlanService,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(CorsMiddleware).forRoutes("*"); // Allow CORS for all routes
+  }
+}
