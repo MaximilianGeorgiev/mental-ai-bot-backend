@@ -32,7 +32,8 @@ export class UsersService {
       .exec();
 
     if (!findMany && result.length > 0) return result[0];
-    return result; // array or null
+    else if (!findMany) return null;
+    else return result;
   }
 
   async update(
