@@ -14,7 +14,7 @@ export class CorsMiddleware implements NestMiddleware {
       "Access-Control-Allow-Methods",
       "GET, POST, PUT, DELETE, OPTIONS",
     );
- 
+
     if (req.method === "OPTIONS") res.status(HttpStatus.OK).end();
 
     // Continue with the next middleware or route handler

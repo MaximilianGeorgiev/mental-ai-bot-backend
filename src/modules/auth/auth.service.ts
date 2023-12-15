@@ -9,6 +9,8 @@ import { IssuedTokensService } from "../tokens/issued-tokens.service";
 
 @Injectable()
 export class AuthService {
+  currentUserId: string;
+
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
@@ -34,6 +36,8 @@ export class AuthService {
       if (correctPassword) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { password, ...result } = user;
+
+        this.currentUserId = user._id;
         return result;
       }
     }
@@ -50,6 +54,7 @@ export class AuthService {
     });
 
     return {
+      loggedUser: this.currentUserId,
       accessToken,
     };
   }
