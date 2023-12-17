@@ -9,7 +9,7 @@ import { IssuedTokensService } from "../tokens/issued-tokens.service";
 
 @Injectable()
 export class AuthService {
-  currentUserId: string;
+  currentUser: Partial<User>;
 
   constructor(
     private usersService: UsersService,
@@ -37,7 +37,7 @@ export class AuthService {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { password, ...result } = user;
 
-        this.currentUserId = user._id;
+        this.currentUser = result;
         return result;
       }
     }
@@ -54,7 +54,7 @@ export class AuthService {
     });
 
     return {
-      loggedUser: this.currentUserId,
+      loggedUser: this.currentUser,
       accessToken,
     };
   }
