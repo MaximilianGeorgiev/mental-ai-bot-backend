@@ -30,10 +30,15 @@ export class ConversationService {
   async find(
     databaseColumn: string,
     columnValue: string,
-  ): Promise<Conversation[] | null> {
-    return this.conversationModel
+    findMany = true,
+  ): Promise<Conversation[] | Conversation | null> {
+    const result = await this.conversationModel
       .find({ [databaseColumn]: columnValue })
       .exec();
+
+    if (!findMany && result.length > 0) return result[0];
+    else if (!findMany) return null;
+    else return result;
   }
 
   async update(

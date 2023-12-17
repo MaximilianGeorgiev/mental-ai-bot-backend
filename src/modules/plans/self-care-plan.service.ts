@@ -29,8 +29,15 @@ export class SelfCarePlanService {
   async find(
     databaseColumn: string,
     columnValue: string,
-  ): Promise<SelfCarePlan[] | null> {
-    return this.planModel.find({ [databaseColumn]: columnValue }).exec();
+    findMany = true,
+  ): Promise<SelfCarePlan[] | SelfCarePlan | null> {
+    const result = await this.planModel
+      .find({ [databaseColumn]: columnValue })
+      .exec();
+
+    if (!findMany && result.length > 0) return result[0];
+    else if (!findMany) return null;
+    else return result;
   }
 
   async update(
