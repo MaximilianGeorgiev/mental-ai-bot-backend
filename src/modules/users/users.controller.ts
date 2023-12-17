@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
 } from "@nestjs/common";
 import { CreateUserDto } from "./dtos/create-user.dto";
@@ -28,8 +29,13 @@ export class UsersController {
   async findByProperty(
     @Param("column") column: string,
     @Param("searchValue") searchValue: string,
+    @Query("many") findMany: boolean,
   ): Promise<void | User[] | []> {
-    const response = await this.usersService.find(column, searchValue);
+    const response = await this.usersService.find(
+      column,
+      searchValue,
+      findMany,
+    );
 
     if (response === null) return [];
     else if (isResponseInstanceOfUser(response)) return response as User[];

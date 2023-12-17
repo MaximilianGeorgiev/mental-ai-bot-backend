@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
 } from "@nestjs/common";
 import { MessageService } from "./message.service";
@@ -28,8 +29,13 @@ export class MessageController {
   async findByProperty(
     @Param("column") column: string,
     @Param("searchValue") searchValue: string,
-  ): Promise<void | Message[] | []> {
-    const response = await this.messageService.find(column, searchValue);
+    @Query("many") findMany: boolean,
+  ): Promise<void | Message[] | Message | []> {
+    const response = await this.messageService.find(
+      column,
+      searchValue,
+      findMany,
+    );
 
     if (response === null) return [];
     else if (isResponseInstanceOfMessage(response)) return response;

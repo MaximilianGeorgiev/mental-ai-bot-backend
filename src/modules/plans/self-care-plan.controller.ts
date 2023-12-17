@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
 } from "@nestjs/common";
 import { CreateSelfCarePlanDto } from "./dtos/create-self-care-plan.dto";
@@ -27,8 +28,13 @@ export class SelfCarePlanController {
   async findByProperty(
     @Param("column") column: string,
     @Param("searchValue") searchValue: string,
-  ): Promise<void | SelfCarePlan[] | []> {
-    const response = await this.selfCarePlanService.find(column, searchValue);
+    @Query("many") findMany: boolean,
+  ): Promise<void | SelfCarePlan[] | SelfCarePlan | []> {
+    const response = await this.selfCarePlanService.find(
+      column,
+      searchValue,
+      findMany,
+    );
 
     if (response === null) return [];
     else if (isResponseInstanceOfSelfCarePlan(response)) return response;

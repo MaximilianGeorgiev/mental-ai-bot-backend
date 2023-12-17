@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
 } from "@nestjs/common";
 import { ConversationService } from "./conversation.service";
@@ -28,8 +29,13 @@ export class ConversationController {
   async findByProperty(
     @Param("column") column: string,
     @Param("searchValue") searchValue: string,
-  ): Promise<void | Conversation[] | []> {
-    const response = await this.conversationService.find(column, searchValue);
+    @Query("many") findMany: boolean,
+  ): Promise<void | Conversation[] | Conversation | []> {
+    const response = await this.conversationService.find(
+      column,
+      searchValue,
+      findMany,
+    );
 
     if (response === null) return [];
     else if (isResponseInstanceOfConversation(response)) return response;
