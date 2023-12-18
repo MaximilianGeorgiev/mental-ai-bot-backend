@@ -2,6 +2,7 @@ import { Conversation } from "src/modules/conversations/schemas/conversation.sch
 import { Message } from "../interfaces/entities/messages";
 import { SelfCarePlan } from "../interfaces/entities/plans";
 import { User } from "../interfaces/entities/users";
+import { ActivityProperties } from "src/modules/activity-properties/schemas/activity-properties.schema";
 
 const containsIdProperty = (response: object) => "_id" in response;
 
@@ -104,6 +105,31 @@ export const isResponseInstanceOfConversation = (
       "messages" in response &&
       "title" in response &&
       "isArchived" in response
+    );
+  } else return false;
+};
+
+export const isResponseInstanceOfActivityProperties = (
+  response: object | object[],
+): response is ActivityProperties => {
+  if (Array.isArray(response)) {
+    let isInstance = true;
+
+    response.forEach((item: object) => {
+      if (!isResponseInstanceOfMessage(item)) {
+        isInstance = false;
+        return;
+      }
+    });
+
+    return isInstance;
+  } else if (typeof response === "object") {
+    return (
+      containsIdProperty(response) &&
+      "activityName" in response &&
+      "benefits" in response &&
+      "metric" in response &&
+      "metricQuantity" in response
     );
   } else return false;
 };
