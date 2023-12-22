@@ -19,10 +19,16 @@ export class ActivityProperties {
   metric: ActivityMetric; // how is progress measured (miles, minutes, pages)
 
   @Prop()
-  metricQuantity: number;
+  metricQuantityLight: number;
 
   @Prop()
-  resources: string[]; // recommended books, music links etc.
+  metricQuantityModerate: number;
+
+  @Prop()
+  metricQuantityIntense: number;
+
+  @Prop()
+  resources?: string[]; // recommended books, music links etc.
 }
 
 export const ActivityPropertiesSchema =

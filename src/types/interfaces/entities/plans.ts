@@ -16,3 +16,9 @@ export interface SelfCarePlan {
   dailyTasks: DailyTask[];
   userId?: string; // bind foreign key
 }
+
+export interface DailyTaskRecommendedMetrics {
+  light: number;
+  moderate: number;
+  intense: number;
+}
