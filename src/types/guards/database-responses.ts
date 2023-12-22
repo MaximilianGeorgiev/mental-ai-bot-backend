@@ -116,7 +116,7 @@ export const isResponseInstanceOfActivityProperties = (
     let isInstance = true;
 
     response.forEach((item: object) => {
-      if (!isResponseInstanceOfMessage(item)) {
+      if (!isResponseInstanceOfActivityProperties(item)) {
         isInstance = false;
         return;
       }
@@ -129,7 +129,9 @@ export const isResponseInstanceOfActivityProperties = (
       "activityName" in response &&
       "benefits" in response &&
       "metric" in response &&
-      "metricQuantity" in response
+      "metricQuantityLight" in response &&
+      "metricQuantityModerate" in response &&
+      "metricQuantityIntense" in response
     );
   } else return false;
 };
