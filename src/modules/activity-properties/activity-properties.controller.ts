@@ -24,7 +24,7 @@ import { ActivityPropertiesService } from "./activity-properties.service";
 export class ActivityPropertiesController {
   constructor(private activityPropertiesService: ActivityPropertiesService) {}
 
-  @UseGuards(AuthGuard("jwt"), AuthGuard("entityOwner"))
+  @UseGuards(AuthGuard("jwt"))
   @Get("/:column/:searchValue")
   async findByProperty(
     @Param("column") column: string,
