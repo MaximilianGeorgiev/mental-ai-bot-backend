@@ -27,6 +27,12 @@ import {
   SelfCarePlanSchema,
 } from "./modules/plans/schemas/self-care-plan.schema";
 import { CorsMiddleware } from "./middlewares/cors.middleware";
+import {
+  ActivityProperties,
+  ActivityPropertiesSchema,
+} from "./modules/activity-properties/schemas/activity-properties.schema";
+import { ActivityPropertiesModule } from "./modules/activity-properties/activity-properties.module";
+import { ActivityPropertiesService } from "./modules/activity-properties/activity-properties.service";
 
 @Module({
   imports: [
@@ -39,6 +45,9 @@ import { CorsMiddleware } from "./middlewares/cors.middleware";
     MongooseModule.forFeature([
       { name: SelfCarePlan.name, schema: SelfCarePlanSchema },
     ]),
+    MongooseModule.forFeature([
+      { name: ActivityProperties.name, schema: ActivityPropertiesSchema },
+    ]),
     JwtModule.register({
       secret: "ah23refdcvxvfr4444eeptb0l21izz15qb4y",
       signOptions: { expiresIn: "1080s" },
@@ -48,6 +57,7 @@ import { CorsMiddleware } from "./middlewares/cors.middleware";
     IssuedTokensModule,
     ConversationsModule,
     SelfCarePlanModule,
+    ActivityPropertiesModule,
   ],
   controllers: [AppController],
   providers: [
@@ -60,6 +70,7 @@ import { CorsMiddleware } from "./middlewares/cors.middleware";
     UsersService,
     ConversationService,
     SelfCarePlanService,
+    ActivityPropertiesService,
   ],
 })
 export class AppModule {
