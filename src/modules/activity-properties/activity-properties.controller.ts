@@ -42,7 +42,7 @@ export class ActivityPropertiesController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @UseGuards(AuthGuard("admin"))
+  @UseGuards(AuthGuard("jwt"))
   @Get()
   async findAll(): Promise<void | ActivityProperties[]> {
     const response = await this.activityPropertiesService.findAll();

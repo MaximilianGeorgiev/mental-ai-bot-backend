@@ -65,7 +65,7 @@ export const isResponseInstanceOfSelfCarePlan = (
     let isInstance = true;
 
     response.forEach((item: object) => {
-      if (!isResponseInstanceOfMessage(item)) {
+      if (!isResponseInstanceOfSelfCarePlan(item)) {
         isInstance = false;
         return;
       }
@@ -91,7 +91,7 @@ export const isResponseInstanceOfConversation = (
     let isInstance = true;
 
     response.forEach((item: object) => {
-      if (!isResponseInstanceOfMessage(item)) {
+      if (!isResponseInstanceOfConversation(item)) {
         isInstance = false;
         return;
       }
