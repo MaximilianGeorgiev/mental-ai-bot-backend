@@ -43,12 +43,20 @@ export class SelfCarePlanService {
   async update(
     selfCarePlanId: string,
     databaseColumn: string,
-    columnValue: string,
+    columnValue: string | SelfCarePlan,
   ): Promise<SelfCarePlan | HttpException | null> {
     try {
+      // allow partial updates by column where databaseColumn specifies column and columnValue specified new value
+      // if databaseColumn is "object" then columnValue will be the entire new object which will be replaced
+      const replaceObject = databaseColumn === "object" ? true : false;
+
       return this.planModel.findOneAndUpdate(
         { _id: selfCarePlanId },
-        { $set: { [databaseColumn]: columnValue } },
+        {
+          $set: replaceObject
+            ? (columnValue as SelfCarePlan)
+            : { [databaseColumn]: columnValue },
+        },
       );
     } catch (err) {
       return new HttpException(err.message, HttpStatus.UNPROCESSABLE_ENTITY);
