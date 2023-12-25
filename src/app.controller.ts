@@ -1,8 +1,16 @@
-import { Controller, Get, UseGuards, Post, Body } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  UseGuards,
+  Post,
+  Body,
+  UseInterceptors,
+} from "@nestjs/common";
 import { AppService } from "./app.service";
 import { AuthService } from "./modules/auth/auth.service";
 import { AuthGuard } from "@nestjs/passport";
 import { LoginCredentialsPayload } from "./types/interfaces/auth/login";
+import { isUserAuthenticatedMiddleware } from "./middlewares/is-authenticated.middleware";
 
 @Controller()
 export class AppController {
@@ -24,4 +32,8 @@ export class AppController {
       password: req.password,
     }); // return auth token
   }
+
+  @UseInterceptors(isUserAuthenticatedMiddleware)
+  @Get("/authenticated")
+  async isUserAuthenticated() {}
 }

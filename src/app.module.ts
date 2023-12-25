@@ -34,6 +34,7 @@ import {
 import { ActivityPropertiesModule } from "./modules/activity-properties/activity-properties.module";
 import { ActivityPropertiesService } from "./modules/activity-properties/activity-properties.service";
 import { EntityOwnerMiddleware } from "./middlewares/entity-owner.middleware";
+import { isUserAuthenticatedMiddleware } from "./middlewares/is-authenticated.middleware";
 
 @Module({
   imports: [
@@ -83,5 +84,8 @@ export class AppModule {
         { path: "/plans/*", method: RequestMethod.PUT },
         { path: "/plans/*", method: RequestMethod.DELETE },
       );
+    consumer
+      .apply(isUserAuthenticatedMiddleware)
+      .forRoutes({ path: "/authenticated", method: RequestMethod.POST });
   }
 }
