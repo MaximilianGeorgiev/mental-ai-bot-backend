@@ -4,7 +4,7 @@ import {
   NestMiddleware,
   UnauthorizedException,
 } from "@nestjs/common";
-import { Request, Response, NextFunction, query } from "express";
+import { Request, Response, NextFunction } from "express";
 import { IssuedToken } from "src/modules/tokens/schemas/issued-tokens.schema";
 import { User } from "src/modules/users/schemas/user.schema";
 import { ServiceNames } from "src/types/enums/service-calls.enum";

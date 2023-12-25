@@ -4,6 +4,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import { SelfCarePlan } from "./schemas/self-care-plan.schema";
 import { CreateSelfCarePlanDto } from "./dtos/create-self-care-plan.dto";
 import { ServiceOperationOutcome } from "src/types/interfaces/api-response";
+import { toObjectId } from "src/utils/database";
 
 @Injectable()
 export class SelfCarePlanService {
@@ -51,10 +52,10 @@ export class SelfCarePlanService {
       const replaceObject = databaseColumn === "object" ? true : false;
 
       return this.planModel.findOneAndUpdate(
-        { _id: selfCarePlanId },
+        { _id: toObjectId(selfCarePlanId) },
         {
           $set: replaceObject
-            ? (columnValue as SelfCarePlan)
+            ? { ...(columnValue as SelfCarePlan), _id: undefined }
             : { [databaseColumn]: columnValue },
         },
       );
