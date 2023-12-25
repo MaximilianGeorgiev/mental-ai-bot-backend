@@ -10,6 +10,7 @@ import {
   Put,
   Query,
   UseGuards,
+  UseInterceptors,
 } from "@nestjs/common";
 import { CreateSelfCarePlanDto } from "./dtos/create-self-care-plan.dto";
 import { SelfCarePlanService } from "./self-care-plan.service";
@@ -19,6 +20,7 @@ import {
   isServiceOutcome,
 } from "src/types/guards/database-responses";
 import { AuthGuard } from "@nestjs/passport";
+import { EntityOwnerMiddleware } from "src/middlewares/entity-owner.middleware";
 
 @Controller("plans")
 export class SelfCarePlanController {
@@ -64,7 +66,8 @@ export class SelfCarePlanController {
     else if (response instanceof HttpException) throw response;
   }
 
-  @UseGuards(AuthGuard("jwt"), AuthGuard("entityOwner"))
+  @UseGuards(AuthGuard("jwt"))
+  @UseInterceptors(EntityOwnerMiddleware)
   @Put(":id")
   async update(
     @Body("column") column: string,

@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module } from "@nestjs/common";
+import { MiddlewareConsumer, Module, RequestMethod } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
@@ -33,6 +33,7 @@ import {
 } from "./modules/activity-properties/schemas/activity-properties.schema";
 import { ActivityPropertiesModule } from "./modules/activity-properties/activity-properties.module";
 import { ActivityPropertiesService } from "./modules/activity-properties/activity-properties.service";
+import { EntityOwnerMiddleware } from "./middlewares/entity-owner.middleware";
 
 @Module({
   imports: [
@@ -76,5 +77,11 @@ import { ActivityPropertiesService } from "./modules/activity-properties/activit
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(CorsMiddleware).forRoutes("*"); // Allow CORS for all routes
+    consumer
+      .apply(EntityOwnerMiddleware)
+      .forRoutes(
+        { path: "/plans/*", method: RequestMethod.PUT },
+        { path: "/plans/*", method: RequestMethod.DELETE },
+      );
   }
 }
