@@ -9,7 +9,7 @@ import { IssuedToken } from "src/modules/tokens/schemas/issued-tokens.schema";
 import { User } from "src/modules/users/schemas/user.schema";
 import { ServiceNames } from "src/types/enums/service-calls.enum";
 import { CrudService } from "src/types/interfaces/api";
-import { toObjectId } from "src/utils/database";
+import { isValidObjectId, toObjectId } from "src/utils/database";
 import { AuthService } from "src/modules/auth/auth.service";
 import { UsersService } from "src/modules/users/users.service";
 import { IssuedTokensService } from "src/modules/tokens/issued-tokens.service";
@@ -73,7 +73,11 @@ export class EntityOwnerMiddleware implements NestMiddleware {
 
       const { userId: entityOwnerUserId, _id: entityId } = (await service.find(
         column,
-        column === "_id" ? toObjectId(queryParam) : queryParam,
+        column === "_id"
+          ? isValidObjectId(queryParam)
+            ? toObjectId(queryParam)
+            : queryParam
+          : queryParam,
         false,
       )) as unknown as any;
 

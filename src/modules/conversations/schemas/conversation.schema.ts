@@ -12,10 +12,10 @@ export class Conversation {
   @Prop({ required: true })
   dateCreated: Date;
 
-  @Prop({ required: true, default: [] })
+  @Prop({ default: [] })
   messages: Message[];
 
-  @Prop({ required: true })
+  @Prop({ default: "New conversation" })
   title: string;
 
   @Prop({ required: true, default: false })
@@ -23,6 +23,9 @@ export class Conversation {
 
   @Prop()
   userId?: string; // bind foreign key
+
+  @Prop()
+  isGuest: boolean;
 }
 
 export const ConversationSchema = SchemaFactory.createForClass(Conversation);

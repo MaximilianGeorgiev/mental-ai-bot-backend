@@ -81,6 +81,7 @@ export class AppModule {
     consumer
       .apply(EntityOwnerMiddleware)
       .forRoutes(
+        { path: "/plans/*", method: RequestMethod.GET },
         { path: "/plans/*", method: RequestMethod.PUT },
         { path: "/plans/*", method: RequestMethod.DELETE },
       );

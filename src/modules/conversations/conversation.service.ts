@@ -4,6 +4,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import { CreateConversationDto } from "./dtos/create-conversation.dto";
 import { ServiceOperationOutcome } from "src/types/interfaces/api-response";
 import { Conversation } from "./schemas/conversation.schema";
+import { toObjectId } from "src/utils/database";
 
 @Injectable()
 export class ConversationService {
@@ -33,7 +34,10 @@ export class ConversationService {
     findMany = true,
   ): Promise<Conversation[] | Conversation | null> {
     const result = await this.conversationModel
-      .find({ [databaseColumn]: columnValue })
+      .find({
+        [databaseColumn]:
+          databaseColumn === "_id" ? toObjectId(columnValue) : columnValue,
+      })
       .exec();
 
     if (!findMany && result.length > 0) return result[0];
