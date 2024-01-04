@@ -40,6 +40,7 @@ import {
   MessageSchema,
 } from "./modules/messages/schemas/message.schema";
 import { MessagesModule } from "./modules/messages/message.module";
+import { MessageService } from "./modules/messages/message.service";
 
 @Module({
   imports: [
@@ -80,6 +81,7 @@ import { MessagesModule } from "./modules/messages/message.module";
     ConversationService,
     SelfCarePlanService,
     ActivityPropertiesService,
+    MessageService,
   ],
 })
 export class AppModule {
@@ -91,6 +93,13 @@ export class AppModule {
         { path: "/plans/*", method: RequestMethod.GET },
         { path: "/plans/*", method: RequestMethod.PUT },
         { path: "/plans/*", method: RequestMethod.DELETE },
+      );
+    consumer
+      .apply(EntityOwnerMiddleware)
+      .forRoutes(
+        { path: "/messages/*", method: RequestMethod.GET },
+        { path: "/messages/*", method: RequestMethod.PUT },
+        { path: "/messages/*", method: RequestMethod.DELETE },
       );
     consumer
       .apply(isUserAuthenticatedMiddleware)

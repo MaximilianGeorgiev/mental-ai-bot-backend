@@ -24,7 +24,7 @@ import { AuthGuard } from "@nestjs/passport";
 export class MessageController {
   constructor(private messageService: MessageService) {}
 
-  @UseGuards(AuthGuard("jwt"), AuthGuard("entityOwner"))
+  @UseGuards(AuthGuard("jwt"))
   @Get("/:column/:searchValue")
   async findByProperty(
     @Param("column") column: string,

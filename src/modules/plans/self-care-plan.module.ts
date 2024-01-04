@@ -15,6 +15,8 @@ import {
 import { IssuedTokensService } from "../tokens/issued-tokens.service";
 import { AuthService } from "../auth/auth.service";
 import { JwtService } from "@nestjs/jwt";
+import { MessageService } from "../messages/message.service";
+import { Message, MessageSchema } from "../messages/schemas/message.schema";
 
 @Module({
   imports: [
@@ -22,6 +24,7 @@ import { JwtService } from "@nestjs/jwt";
       { name: SelfCarePlan.name, schema: SelfCarePlanSchema },
       { name: User.name, schema: UserSchema },
       { name: IssuedToken.name, schema: IssuedTokenSchema },
+      { name: Message.name, schema: MessageSchema },
     ]),
   ],
   controllers: [SelfCarePlanController],
@@ -31,6 +34,7 @@ import { JwtService } from "@nestjs/jwt";
     UsersService,
     JwtService,
     SelfCarePlanService,
+    MessageService,
   ],
 })
 export class SelfCarePlanModule {}

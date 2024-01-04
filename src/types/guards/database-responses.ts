@@ -102,7 +102,7 @@ export const isResponseInstanceOfConversation = (
     return (
       containsIdProperty(response) &&
       "dateCreated" in response &&
-      "messages" in response &&
+      "isGuest" in response &&
       "title" in response &&
       "isArchived" in response
     );

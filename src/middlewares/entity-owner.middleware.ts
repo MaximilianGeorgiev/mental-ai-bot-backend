@@ -14,6 +14,7 @@ import { AuthService } from "src/modules/auth/auth.service";
 import { UsersService } from "src/modules/users/users.service";
 import { IssuedTokensService } from "src/modules/tokens/issued-tokens.service";
 import { SelfCarePlanService } from "src/modules/plans/self-care-plan.service";
+import { MessageService } from "src/modules/messages/message.service";
 
 @Injectable()
 export class EntityOwnerMiddleware implements NestMiddleware {
@@ -21,17 +22,20 @@ export class EntityOwnerMiddleware implements NestMiddleware {
   tokensService: IssuedTokensService;
   authService: AuthService;
   plansService: SelfCarePlanService;
+  messagesService: MessageService;
 
   constructor(
     usersService: UsersService,
     tokensService: IssuedTokensService,
     authService: AuthService,
     plansService: SelfCarePlanService,
+    messagesService: MessageService,
   ) {
     this.usersService = usersService;
     this.tokensService = tokensService;
     this.authService = authService;
     this.plansService = plansService;
+    this.messagesService = messagesService;
   }
   async use(req: Request, res: Response, next: NextFunction) {
     //@ts-ignore
