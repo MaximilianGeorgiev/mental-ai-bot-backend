@@ -41,6 +41,8 @@ import {
 } from "./modules/messages/schemas/message.schema";
 import { MessagesModule } from "./modules/messages/message.module";
 import { MessageService } from "./modules/messages/message.service";
+import { AiService } from "./modules/ai/services/main.service";
+import { AiModule } from "./modules/ai/ai.module";
 
 @Module({
   imports: [
@@ -68,6 +70,7 @@ import { MessageService } from "./modules/messages/message.service";
     SelfCarePlanModule,
     ActivityPropertiesModule,
     MessagesModule,
+    AiModule,
   ],
   controllers: [AppController],
   providers: [
@@ -82,6 +85,7 @@ import { MessageService } from "./modules/messages/message.service";
     SelfCarePlanService,
     ActivityPropertiesService,
     MessageService,
+    AiService,
   ],
 })
 export class AppModule {

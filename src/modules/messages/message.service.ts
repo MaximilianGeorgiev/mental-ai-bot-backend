@@ -1,14 +1,16 @@
 import { Model } from "mongoose";
-import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Inject, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { CreateMessageDto } from "./dtos/create-message.dto";
 import { ServiceOperationOutcome } from "src/types/interfaces/api-response";
 import { Message } from "./schemas/message.schema";
+import { AiService } from "../ai/services/main.service";
 
 @Injectable()
 export class MessageService {
   constructor(
     @InjectModel(Message.name) private messageModel: Model<Message>,
+    @Inject(AiService) private readonly aiService: AiService,
   ) {}
 
   async create(
