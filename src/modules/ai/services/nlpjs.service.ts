@@ -2,6 +2,11 @@
 import { Injectable } from "@nestjs/common";
 import { AiImplementation } from "./main.service";
 import { Message } from "src/types/interfaces/entities/messages";
+import { answers, utterancesAndIntents } from "src/utils/ai-training";
+import {
+  AiTrainingAnswer,
+  AiTrainingUterancesAndIntents,
+} from "src/types/interfaces/ai";
 const { containerBootstrap } = require("@nlpjs/core");
 const { Nlp } = require("@nlpjs/nlp");
 const { LangEn } = require("@nlpjs/lang-en-min");
@@ -23,21 +28,20 @@ export class NlpJsService implements AiImplementation {
     this.nlpObject = container.get("nlp");
     this.nlpObject.settings.autoSave = false;
     this.nlpObject.addLanguage("en");
-    // Adds the utterances and intents for the nlp
-    this.nlpObject.addDocument("en", "goodbye for now", "greetings.bye");
-    this.nlpObject.addDocument("en", "bye bye take care", "greetings.bye");
-    this.nlpObject.addDocument("en", "okay see you later", "greetings.bye");
-    this.nlpObject.addDocument("en", "bye for now", "greetings.bye");
-    this.nlpObject.addDocument("en", "i must go", "greetings.bye");
-    this.nlpObject.addDocument("en", "hello", "greetings.hello");
-    this.nlpObject.addDocument("en", "hi", "greetings.hello");
-    this.nlpObject.addDocument("en", "howdy", "greetings.hello");
 
-    // Train also the NLG
-    this.nlpObject.addAnswer("en", "greetings.bye", "Till next time");
-    this.nlpObject.addAnswer("en", "greetings.bye", "see you soon!");
-    this.nlpObject.addAnswer("en", "greetings.hello", "Hey there!");
-    this.nlpObject.addAnswer("en", "greetings.hello", "Greetings!");
+    // Adds the utterances and intents for the nlp
+    utterancesAndIntents.forEach(
+      (currentElement: AiTrainingUterancesAndIntents) => {
+        const { language, utterance, trainedAnswer } = currentElement;
+        this.nlpObject.addDocument(language, utterance, trainedAnswer);
+      },
+    );
+
+    // Train answers
+    answers.forEach((trainedAnswer: AiTrainingAnswer) => {
+      const { language, identifier, message } = trainedAnswer;
+      this.nlpObject.addAnswer(language, identifier, message);
+    });
 
     await this.nlpObject.train();
     const response = await this.nlpObject.process("en", "I should go now");
