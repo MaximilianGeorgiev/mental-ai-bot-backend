@@ -33,7 +33,10 @@ export class SelfCarePlanService {
     findMany = true,
   ): Promise<SelfCarePlan[] | SelfCarePlan | null> {
     const result = await this.planModel
-      .find({ [databaseColumn]: columnValue })
+      .find({
+        [databaseColumn]:
+          databaseColumn === "_id" ? toObjectId(columnValue) : columnValue,
+      })
       .exec();
 
     if (!findMany && result.length > 0) return result[0];

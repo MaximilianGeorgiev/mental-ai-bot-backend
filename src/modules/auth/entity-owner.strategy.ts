@@ -6,7 +6,6 @@ import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { User } from "src/types/interfaces/entities/users";
 import { UsersService } from "../users/users.service";
 import { AuthService } from "./auth.service";
-import { MessageService } from "../messages/message.service";
 import { ConversationService } from "../conversations/conversation.service";
 import { SelfCarePlanService } from "../plans/self-care-plan.service";
 import { ServiceNames } from "src/types/enums/service-calls.enum";

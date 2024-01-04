@@ -36,8 +36,8 @@ export class EntityOwnerMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {
     //@ts-ignore
     const bearerToken = req.headers.authorization.split(" ")[1];
-    const queryParam = req.params["0"];
-    const column = "_id";
+    const queryParam = req.params["0"].split("/")[1];
+    const column = req.params["0"].split("/")[0];
     const routeUrl = req.url;
 
     // Obtain who owns the issued token

@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument, Types } from "mongoose";
-import { Message } from "src/modules/messages/schemas/message.schema";
 
 export type MessageDocument = HydratedDocument<Conversation>;
 
@@ -11,9 +10,6 @@ export class Conversation {
 
   @Prop({ required: true })
   dateCreated: Date;
-
-  @Prop({ default: [] })
-  messages: Message[];
 
   @Prop({ default: "New conversation" })
   title: string;

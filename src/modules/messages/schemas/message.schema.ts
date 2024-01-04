@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument, Types } from "mongoose";
 import { MessageType } from "src/types/messages.type";
+import { Message as MessageInterface } from "src/types/interfaces/entities/messages";
 
 export type MessageDocument = HydratedDocument<Message>;
 
@@ -18,11 +19,14 @@ export class Message {
   @Prop({ required: true })
   type: MessageType;
 
-  @Prop()
-  response?: Message;
+  @Prop({ type: Object })
+  response?: MessageInterface;
 
   @Prop()
   userId?: string; // bind foreign key
+
+  @Prop()
+  conversationId: string; // bind foreign key
 }
 
 export const MessageSchema = SchemaFactory.createForClass(Message);

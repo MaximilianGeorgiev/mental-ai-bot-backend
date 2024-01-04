@@ -3,4 +3,5 @@ export interface CreateMessageDto {
   timestamp: Date;
   message: string;
   userId?: string; // bind foreign key
+  conversationId: string;
 }

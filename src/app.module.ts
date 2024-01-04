@@ -35,6 +35,11 @@ import { ActivityPropertiesModule } from "./modules/activity-properties/activity
 import { ActivityPropertiesService } from "./modules/activity-properties/activity-properties.service";
 import { EntityOwnerMiddleware } from "./middlewares/entity-owner.middleware";
 import { isUserAuthenticatedMiddleware } from "./middlewares/is-authenticated.middleware";
+import {
+  Message,
+  MessageSchema,
+} from "./modules/messages/schemas/message.schema";
+import { MessagesModule } from "./modules/messages/message.module";
 
 @Module({
   imports: [
@@ -50,6 +55,7 @@ import { isUserAuthenticatedMiddleware } from "./middlewares/is-authenticated.mi
     MongooseModule.forFeature([
       { name: ActivityProperties.name, schema: ActivityPropertiesSchema },
     ]),
+    MongooseModule.forFeature([{ name: Message.name, schema: MessageSchema }]),
     JwtModule.register({
       secret: "ah23refdcvxvfr4444eeptb0l21izz15qb4y",
       signOptions: { expiresIn: "1080s" },
@@ -60,6 +66,7 @@ import { isUserAuthenticatedMiddleware } from "./middlewares/is-authenticated.mi
     ConversationsModule,
     SelfCarePlanModule,
     ActivityPropertiesModule,
+    MessagesModule,
   ],
   controllers: [AppController],
   providers: [
