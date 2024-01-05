@@ -472,4 +472,244 @@ export const depressionAnswers: AiTrainingAnswer[] = [
     message:
       "You are not defined by your darkest moments. With courage, support, and a positive outlook, you can overcome these thoughts. Your journey towards healing is filled with strength, hope, and the possibility of a brighter future.",
   },
+  {
+    language: "en",
+    identifier: "depression.intrusive1",
+    message:
+      "I understand that dealing with intrusive thoughts can be incredibly challenging. It's important to recognize that these thoughts don't define you, and you're not alone in facing them.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive1",
+    message:
+      "Intrusive thoughts can be overwhelming, but it's okay to reach out for support. Many people experience similar struggles, and sharing your feelings with someone you trust can make a significant difference.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive1",
+    message:
+      "I want you to know that your feelings are valid, and it's okay to seek understanding and support. Intrusive thoughts can be distressing, but there are resources and people who are here to help you navigate through them.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive1",
+    message:
+      "Dealing with intrusive thoughts can be isolating, but you don't have to face it alone. Reach out to friends, family, or a mental health professional who can provide empathy and guidance in managing these challenging thoughts.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive1",
+    message:
+      "I want you to know that your emotions are valid, and it's okay to seek understanding. Intrusive thoughts can be distressing, but you are not defined by them. Together, we can explore ways to cope and find support.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive1",
+    message:
+      "It's completely normal to struggle with intrusive thoughts, and your feelings are valid. Remember that you're not alone in facing this, and there are compassionate individuals and resources ready to support you on your journey.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive1",
+    message:
+      "Dealing with intrusive thoughts can be challenging, but it's important to be kind to yourself. You deserve empathy and understanding. Reach out to those who care about you, and let them provide the support you need.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive1",
+    message:
+      "You are not alone in facing intrusive thoughts, and your feelings matter. It's okay to seek support and share your experiences with someone you trust. Together, we can navigate through these thoughts with empathy and understanding.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive1",
+    message:
+      "I want you to know that your struggles with intrusive thoughts are acknowledged, and you're not alone on this journey. Seeking help and sharing your feelings can be a powerful step towards finding empathy and support.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive1",
+    message:
+      "Dealing with intrusive thoughts can be overwhelming, but your feelings are valid. Reach out to those who understand and can provide empathy and support. You don't have to face these thoughts alone.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive2",
+    message:
+      "When intrusive thoughts arise, focus on your breathing. Take slow, deep breaths to help ground yourself in the present moment. This simple technique can bring a sense of calmness and clarity.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive2",
+    message:
+      "Engage in a favorite hobby or activity that brings you joy. Redirecting your attention to something you love can help shift your focus away from intrusive thoughts and provide a positive outlet.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive2",
+    message:
+      "Create a distraction toolkit with activities that capture your attention. Whether it's listening to music, solving puzzles, or going for a walk, having options readily available can help redirect your mind.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive2",
+    message:
+      "Practice mindfulness by observing your surroundings and sensations. Ground yourself in the present moment, acknowledging the sights, sounds, and feelings around you. This can help break the cycle of intrusive thoughts.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive2",
+    message:
+      "Establish a positive routine that includes self-care activities. Regular exercise, sufficient sleep, and healthy meals contribute to overall well-being and can play a role in managing intrusive thoughts.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive2",
+    message:
+      "Challenge negative thoughts with positive affirmations. Replace intrusive thoughts with statements that affirm your worth and resilience. Repeat these affirmations to counteract negativity.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive2",
+    message:
+      "Keep a journal to express your thoughts and emotions. Writing can serve as a therapeutic outlet and help you gain insights into patterns of intrusive thoughts. It's a simple yet effective way to cope.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive2",
+    message:
+      "Connect with loved ones for support. Sharing your experiences with someone you trust can provide comfort and understanding. Sometimes, a supportive conversation can help diminish intrusive thoughts.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive2",
+    message:
+      "Engage in physical activity, even if it's a short walk. Exercise releases endorphins, which can positively impact your mood and help distract from intrusive thoughts. Choose an activity you enjoy.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive2",
+    message:
+      "Establish a 'thought-stopping' technique. Visualize a stop sign when intrusive thoughts arise and consciously redirect your focus to a positive image or activity. This simple visualization can interrupt negative thought patterns.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "You possess incredible strength within yourself. Remember that you have the power to overcome and not devote yourself to intrusive thoughts. Your resilience is a testament to your inner strength.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "In moments of doubt, recognize your own strength. You are capable of overcoming intrusive thoughts and choosing not to devote yourself to them. Believe in your ability to navigate through these challenges with resilience.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "You are stronger than you may realize. Remind yourself that you have the strength to not devote yourself to intrusive thoughts. Your journey is marked by resilience, and you can rise above these challenges.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Trust in your inner strength. Even in the face of intrusive thoughts, you have the capacity to choose not to devote yourself to them. Your resilience is a guiding force on the path to overcoming these challenges.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "You possess the strength to break free from intrusive thoughts. Choose not to devote yourself to these thoughts, and embrace the inner resilience that guides you towards a mindset of positivity and empowerment.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Acknowledge the strength within you. You can overcome and not devote yourself to intrusive thoughts. Your journey is marked by resilience, and with each step, you move closer to a mindset of empowerment and positivity.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Believe in your own strength. You have the ability to rise above intrusive thoughts and choose not to devote yourself to them. Your journey is a testament to resilience, and you can shape a positive mindset.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Recognize your inner strength. Even in challenging moments, you can choose not to devote yourself to intrusive thoughts. Your resilience is a guiding force, leading you towards a mindset of empowerment and optimism.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "You are not defined by intrusive thoughts. Remind yourself of your strength and choose not to devote yourself to these thoughts. Your resilience is a powerful force, guiding you towards a mindset of positivity and strength.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Trust in your ability to overcome. You have the strength to not devote yourself to intrusive thoughts. Your journey is marked by resilience, and you can shape a mindset that empowers and uplifts you.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Your strength is remarkable, and it extends beyond intrusive thoughts. Choose not to devote yourself to these thoughts, knowing that your resilience paves the way for a brighter path ahead.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "In the face of intrusive thoughts, recognize the power within you. Refuse to devote yourself to these thoughts and embrace the strength that propels you forward on your journey of resilience and self-discovery.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Acknowledge your inner strength, a force that goes beyond intrusive thoughts. Opt not to devote yourself to these thoughts, and let your resilience guide you towards a mindset of empowerment and positivity.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Believe in your strength—it's a force that surpasses intrusive thoughts. Choose not to devote yourself to these thoughts, allowing your resilience to shape a narrative of triumph and resilience.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Your strength is boundless, extending beyond intrusive thoughts. Refuse to devote yourself to these thoughts, and let your resilience lead the way towards a mindset filled with empowerment and renewed hope.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Recognize the magnitude of your inner strength. Opt not to devote yourself to intrusive thoughts, and let your resilience carve a path towards a mindset characterized by empowerment, growth, and renewed optimism.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Trust in the immense strength that resides within you. Refuse to devote yourself to intrusive thoughts, allowing your resilience to illuminate the path towards a mindset of empowerment, positivity, and self-affirmation.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Your strength is a formidable force, transcending intrusive thoughts. Choose not to devote yourself to these thoughts, and let your resilience chart a course towards a mindset filled with empowerment and unwavering self-belief.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "In moments of doubt, trust in your inner strength. Refuse to devote yourself to intrusive thoughts, knowing that your resilience is the driving force towards a mindset characterized by empowerment and unwavering determination.",
+  },
+  {
+    language: "en",
+    identifier: "depression.intrusive3",
+    message:
+      "Your strength is your compass, guiding you beyond intrusive thoughts. Opt not to devote yourself to these thoughts, allowing your resilience to sculpt a mindset of empowerment, optimism, and enduring strength.",
+  },
 ];

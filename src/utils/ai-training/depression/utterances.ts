@@ -296,4 +296,120 @@ export const depressionUtterancesAndIntents: AiTrainingUterancesAndIntents[] = [
     utterance: "i am at the bottom",
     trainedAnswer: "depression.suicidal3",
   },
+  // Intrusive thoughts
+  {
+    language: "en",
+    utterance: "think very bad things",
+    trainedAnswer: "depression.intrusive1",
+  },
+  {
+    language: "en",
+    utterance: "want the worst",
+    trainedAnswer: "depression.intrusive1",
+  },
+  {
+    language: "en",
+    utterance: "hate",
+    trainedAnswer: "depression.intrusive1",
+  },
+  {
+    language: "en",
+    utterance: "really want to hurt someone",
+    trainedAnswer: "depression.intrusive1",
+  },
+  {
+    language: "en",
+    utterance: "do harm",
+    trainedAnswer: "depression.intrusive1",
+  },
+  {
+    language: "en",
+    utterance: "need to abuse",
+    trainedAnswer: "depression.intrusive1",
+  },
+  {
+    language: "en",
+    utterance: "enjoy the thought of physical violence",
+    trainedAnswer: "depression.intrusive1",
+  },
+  {
+    language: "en",
+    utterance: "on the verdge of doing harm",
+    trainedAnswer: "depression.intrusive1",
+  },
+  {
+    language: "en",
+    utterance: "how to stop myself",
+    trainedAnswer: "depression.intrusive2",
+  },
+  {
+    language: "en",
+    utterance: "not act on my thoughts",
+    trainedAnswer: "depression.intrusive2",
+  },
+  {
+    language: "en",
+    utterance: "not to fulfill my wishes",
+    trainedAnswer: "depression.intrusive2",
+  },
+  {
+    language: "en",
+    utterance: "dont proceed",
+    trainedAnswer: "depression.intrusive2",
+  },
+  {
+    language: "en",
+    utterance: "get rid of intrusive thoughts",
+    trainedAnswer: "depression.intrusive2",
+  },
+  {
+    language: "en",
+    utterance: "overcome intrusive thoughts",
+    trainedAnswer: "depression.intrusive2",
+  },
+  {
+    language: "en",
+    utterance: "calm my mind",
+    trainedAnswer: "depression.intrusive2",
+  },
+  {
+    language: "en",
+    utterance: "they are always with me",
+    trainedAnswer: "depression.intrusive3",
+  },
+  {
+    language: "en",
+    utterance: "can't escape them",
+    trainedAnswer: "depression.intrusive3",
+  },
+  {
+    language: "en",
+    utterance: "part of me",
+    trainedAnswer: "depression.intrusive3",
+  },
+  {
+    language: "en",
+    utterance: "all of my thoughts are this",
+    trainedAnswer: "depression.intrusive3",
+  },
+  {
+    language: "en",
+    utterance: "nothing else matters",
+    trainedAnswer: "depression.intrusive3",
+  },
+  {
+    language: "en",
+    utterance: "fear i might harm someone",
+    trainedAnswer: "depression.intrusive3",
+  },
+  {
+    language: "en",
+    utterance: "dont want to harm",
+    trainedAnswer: "depression.intrusive3",
+  },
+  {
+    language: "en",
+    utterance: "stop me from hurting",
+    trainedAnswer: "depression.intrusive3",
+  },
 ];
