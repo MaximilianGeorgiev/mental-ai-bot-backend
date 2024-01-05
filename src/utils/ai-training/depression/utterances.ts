@@ -190,4 +190,110 @@ export const depressionUtterancesAndIntents: AiTrainingUterancesAndIntents[] = [
     utterance: "stop self harm",
     trainedAnswer: "depression.selfharm2",
   },
+  // Depression: suicidal thoughts
+  {
+    language: "en",
+    utterance: "suicide",
+    trainedAnswer: "depression.suicidal1",
+  },
+  {
+    language: "en",
+    utterance: "suicide",
+    trainedAnswer: "depression.suicidal1",
+  },
+  {
+    language: "en",
+    utterance: "help me i'm suicidal",
+    trainedAnswer: "depression.suicidal1",
+  },
+  {
+    language: "en",
+    utterance: "i need to die",
+    trainedAnswer: "depression.suicidal1",
+  },
+  {
+    language: "en",
+    utterance: "i must end my life",
+    trainedAnswer: "depression.suicidal1",
+  },
+  {
+    language: "en",
+    utterance: "kill myself",
+    trainedAnswer: "depression.suicidal1",
+  },
+  {
+    language: "en",
+    utterance: "die",
+    trainedAnswer: "depression.suicidal1",
+  },
+  {
+    language: "en",
+    utterance: "what to do",
+    trainedAnswer: "depression.suicidal2",
+  },
+  {
+    language: "en",
+    utterance: "how to do it",
+    trainedAnswer: "depression.suicidal1",
+  },
+  {
+    language: "en",
+    utterance: "need to get over it",
+    trainedAnswer: "depression.suicidal2",
+  },
+  {
+    language: "en",
+    utterance: "need advise",
+    trainedAnswer: "depression.suicidal2",
+  },
+  {
+    language: "en",
+    utterance: "don't want to be suicidal",
+    trainedAnswer: "depression.suicidal2",
+  },
+  {
+    language: "en",
+    utterance: "have to let these thoughts pass",
+    trainedAnswer: "depression.suicidal2",
+  },
+  {
+    language: "en",
+    utterance: "forget about these thoughts",
+    trainedAnswer: "depression.suicidal2",
+  },
+  {
+    language: "en",
+    utterance: "how likely is it to go forward",
+    trainedAnswer: "depression.suicidal3",
+  },
+  {
+    language: "en",
+    utterance: "how do i find the strength",
+    trainedAnswer: "depression.suicidal3",
+  },
+  {
+    language: "en",
+    utterance: "I feel weak",
+    trainedAnswer: "depression.suicidal3",
+  },
+  {
+    language: "en",
+    utterance: "uncapable",
+    trainedAnswer: "depression.suicidal3",
+  },
+  {
+    language: "en",
+    utterance: "i am a degenerate",
+    trainedAnswer: "depression.suicidal3",
+  },
+  {
+    language: "en",
+    utterance: "i can't do anything meaningful",
+    trainedAnswer: "depression.suicidal3",
+  },
+  {
+    language: "en",
+    utterance: "i am at the bottom",
+    trainedAnswer: "depression.suicidal3",
+  },
 ];

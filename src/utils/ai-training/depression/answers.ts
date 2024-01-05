@@ -231,4 +231,245 @@ export const depressionAnswers: AiTrainingAnswer[] = [
     message:
       "Taking care of your mental health is important. Have you considered incorporating mindfulness or relaxation exercises into your routine? Activities like deep breathing, meditation, or gentle yoga can contribute to a sense of calm and well-being.",
   },
+  // Depression: suicidal
+  {
+    language: "en",
+    identifier: "depression.suicidal1",
+    message:
+      "I'm really sorry to hear that you're feeling this way. You're not alone, and there are people who care about you. Reach out to friends, family, or a mental health professional for support.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal1",
+    message:
+      "I can't fully understand what you're going through, but I want you to know that your feelings are valid. It's crucial to talk to someone you trust about this, whether it's a friend, family member, or mental health professional.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal1",
+    message:
+      "I'm here to listen and support you. It's important to let someone close to you know about what you're experiencing. They care about your well-being and can provide the help you need.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal1",
+    message:
+      "I'm so sorry that you're feeling like this. Talking to someone about your thoughts and emotions can be a crucial step. Reach out to a friend, family member, or a mental health professional who can offer support.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal1",
+    message:
+      "I hear you, and I'm here for you. Sharing your feelings with someone you trust is important. They may be able to offer guidance, or it could be helpful to speak with a mental health professional who specializes in this area.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal1",
+    message:
+      "I'm really sorry that you're feeling this way. Your emotions matter, and it's crucial to talk to someone who can provide support. Reach out to friends, family, or a mental health professional.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal1",
+    message:
+      "I'm here for you, and I care about your well-being. Consider talking to someone you trust about what you're going through. Seeking support is an important step toward healing.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal1",
+    message:
+      "I can't fully understand your pain, but I'm here to listen. Let someone close to you know about your feelings, and consider reaching out to a mental health professional who can offer guidance and support.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal1",
+    message:
+      "I'm really sorry that you're experiencing this. It's important to share your feelings with someone you trust. Consider talking to friends, family, or a mental health professional who can offer help and support.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal1",
+    message:
+      "Your feelings are important, and I want you to know that you don't have to face this alone. Reach out to someone you trust, whether it's a friend, family member, or mental health professional. They care about you and want to help.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "It's important to engage in activities that bring you joy and a sense of purpose. Consider spending time doing things you love, whether it's a hobby, creative expression, or spending time in nature.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Try to focus on small, positive steps each day. Set achievable goals and celebrate your accomplishments, no matter how small. Building a sense of achievement can contribute to a more positive outlook.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Practice mindfulness and relaxation techniques to help calm your mind. Deep breathing exercises, meditation, and yoga can be beneficial in reducing stress and promoting mental well-being.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Connect with others who understand and support you. Share your feelings with trusted friends or family members. You don't have to face this alone, and having a support system is crucial.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Consider seeking professional help. A mental health professional can provide guidance, support, and strategies to help you navigate through challenging times and overcome suicidal thoughts.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Engage in activities that promote a sense of purpose. Whether it's volunteering, helping others, or pursuing a passion, finding meaning in your daily life can contribute to a positive mindset.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Challenge negative thoughts by focusing on positive affirmations. Remind yourself of your strengths and achievements. Replace self-critical thoughts with compassionate and empowering ones.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Create a safety plan for yourself, including contact numbers for friends, family, and mental health professionals. Having a plan in place can provide a sense of security during difficult moments.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Explore therapeutic outlets such as counseling or therapy. A mental health professional can work with you to identify coping strategies and provide ongoing support for your well-being.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Focus on building a routine that includes self-care activities. Prioritize your physical and mental health by getting enough sleep, eating nourishing meals, and engaging in activities that bring you joy.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Practice self-compassion and kindness towards yourself. Treat yourself with the same care and understanding that you would offer to a friend going through a difficult time.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Engage in activities that promote relaxation and stress reduction. Consider activities like listening to calming music, taking a warm bath, or practicing progressive muscle relaxation.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Create a gratitude journal to focus on positive aspects of your life. Regularly writing down things you are grateful for can shift your mindset and bring attention to positive experiences.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Identify triggers and develop coping strategies. Understanding what triggers negative thoughts can help you proactively manage challenging situations and build resilience.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Consider joining support groups or communities where individuals share their experiences. Connecting with others who have faced similar struggles can provide understanding and a sense of belonging.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Set realistic expectations for yourself and acknowledge your progress. Breaking down larger goals into smaller, achievable steps can make the journey more manageable.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Explore creative outlets such as art, writing, or music as a means of self-expression. Engaging in creative activities can be a therapeutic way to process emotions.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Practice positive self-talk and challenge negative beliefs. Replace self-critical thoughts with affirmations that reinforce your worth and resilience.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Develop a safety plan that includes coping strategies for times of distress. Having a plan in place can provide a roadmap for managing difficult moments and seeking support.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal2",
+    message:
+      "Engage in activities that bring a sense of accomplishment. Completing tasks, even small ones, can contribute to a positive outlook and build confidence in your abilities.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal3",
+    message:
+      "You have incredible strength within you, and I believe in your ability to overcome these challenging thoughts. Reach out to those who care about you, and together, you can face this journey with courage.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal3",
+    message:
+      "Remember that your life is valuable, and there is hope for a brighter future. Small steps can lead to significant changes. Surround yourself with positivity and take one step at a time towards healing.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal3",
+    message:
+      "Even in the darkest moments, there is a spark of light within you. Embrace the support around you, and with resilience, you can overcome these thoughts. Your journey to healing is unique, and you're not alone.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal3",
+    message:
+      "You are stronger than you think, and there is strength in reaching out for help. Your journey is important, and by sharing your feelings and seeking support, you're taking steps towards a brighter future.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal3",
+    message:
+      "The road to recovery may be challenging, but remember that you have the power to shape your own story. Surround yourself with positivity, seek help, and believe in the strength within you to overcome these thoughts.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal3",
+    message:
+      "You have the resilience to navigate through tough times. Embrace the support available, focus on the positive aspects of your journey, and know that healing is a continuous process. Your strength is admirable.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal3",
+    message:
+      "Each day is an opportunity for growth and healing. Acknowledge the progress you make, and remember that you have the inner strength to overcome challenges. Your journey towards hope and positivity is unfolding.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal3",
+    message:
+      "Your journey is unique, and there is hope for a brighter tomorrow. Surround yourself with positivity, reach out for support, and believe in your ability to overcome these thoughts. You are not alone on this path.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal3",
+    message:
+      "Even in difficult times, your resilience shines through. Embrace the positive moments, connect with those who care about you, and know that you possess the strength to overcome these thoughts. Your story is still unfolding.",
+  },
+  {
+    language: "en",
+    identifier: "depression.suicidal3",
+    message:
+      "You are not defined by your darkest moments. With courage, support, and a positive outlook, you can overcome these thoughts. Your journey towards healing is filled with strength, hope, and the possibility of a brighter future.",
+  },
 ];
