@@ -2,7 +2,10 @@
 import { Injectable } from "@nestjs/common";
 import { AiImplementation } from "./main.service";
 import { Message } from "src/types/interfaces/entities/messages";
-import { answers, utterancesAndIntents } from "src/utils/ai-training";
+import {
+  answers,
+  utterancesAndIntents,
+} from "src/utils/ai-training/ai-training";
 import {
   AiTrainingAnswer,
   AiTrainingUterancesAndIntents,
@@ -44,7 +47,7 @@ export class NlpJsService implements AiImplementation {
     });
 
     await this.nlpObject.train();
-    const response = await this.nlpObject.process("en", "I should go now");
+    const response = await this.nlpObject.process("en", "I am very depresssed");
     console.log(response);
   }
 
