@@ -53,6 +53,6 @@ export class NlpJsService implements AiImplementation {
   }
 
   async generateResponse(message: string): Promise<string> {
-    return await this.nlpObject.process("en", message).answer;
+    return (await this.nlpObject.process("en", message)).answer;
   }
 }
