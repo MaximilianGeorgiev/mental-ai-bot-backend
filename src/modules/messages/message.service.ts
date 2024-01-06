@@ -17,6 +17,10 @@ export class MessageService {
     createMessageDto: CreateMessageDto,
   ): Promise<Message | HttpException> {
     try {
+      createMessageDto.response = await this.aiService.generateResponse(
+        createMessageDto.message,
+      );
+
       const createdMessage = new this.messageModel(createMessageDto);
       return await createdMessage.save();
     } catch (err) {

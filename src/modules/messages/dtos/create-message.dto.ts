@@ -4,4 +4,5 @@ export interface CreateMessageDto {
   message: string;
   userId?: string; // bind foreign key
   conversationId: string;
+  response?: string;
 }

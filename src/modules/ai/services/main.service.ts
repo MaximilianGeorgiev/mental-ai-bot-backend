@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { Injectable } from "@nestjs/common";
 import { NlpJsService } from "./nlpjs.service";
-import { Message } from "src/types/interfaces/entities/messages";
 
 export interface AiImplementation {
-  generateResponse(message: string): Message;
+  generateResponse(message: string): Promise<string>;
 }
 
 /* This is the abstract service that will delegate the call to the respective 
@@ -16,12 +15,14 @@ const SERVICE_IMPLEMENTATION = "NLP.JS"; // TO DO: Extract env
 export class AiService implements AiImplementation {
   implementationService: any = {};
 
-  constructor() {
+  constructor() {}
+  async generateResponse(message: string): Promise<string> {
     if (SERVICE_IMPLEMENTATION === "NLP.JS") {
-      this.implementationService = new NlpJsService();
+      if (!(this.implementationService instanceof NlpJsService)) {
+        this.implementationService = await NlpJsService.createInstance();
+      }
     }
-  }
-  generateResponse(message: string): Message {
+
     return this.implementationService.generateResponse(message);
   }
 }

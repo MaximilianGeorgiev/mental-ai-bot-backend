@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { Injectable } from "@nestjs/common";
 import { AiImplementation } from "./main.service";
-import { Message } from "src/types/interfaces/entities/messages";
 import {
   answers,
   utterancesAndIntents,
@@ -19,8 +18,12 @@ const { LangEn } = require("@nlpjs/lang-en-min");
 export class NlpJsService implements AiImplementation {
   nlpObject: any = {}; // natural language processor
 
-  constructor() {
-    this.initProcessor();
+  private constructor() {} // private constructor to enforce factory method usage
+
+  static async createInstance(): Promise<NlpJsService> {
+    const instance = new NlpJsService();
+    await instance.initProcessor();
+    return instance;
   }
 
   async initProcessor() {
@@ -47,11 +50,9 @@ export class NlpJsService implements AiImplementation {
     });
 
     await this.nlpObject.train();
-    const response = await this.nlpObject.process("en", "I am very depresssed");
-    console.log(response);
   }
 
-  generateResponse(message: string): Message {
-    return this.nlpObject.proccess("en", message);
+  async generateResponse(message: string): Promise<string> {
+    return await this.nlpObject.process("en", message).answer;
   }
 }
